@@ -1,4 +1,4 @@
-// let draggedElement = null;
+// let dragElement = null;
 
 // document.querySelectorAll(".image").forEach((div) => {
 //   div.addEventListener("dragstart", (e) => {
@@ -39,10 +39,13 @@ document.querySelectorAll(".image").forEach((div)=>{
 	div.addEventListener('drop', (e)=> {
 		e.preventDefault();
 		if(dragElement && dragElement !== e.target){
-			let temp = document.createElement("div");
-		    e.target.replaceWith(temp);
-		    dragElement.replaceWith(e.target);
-		    temp.replaceWith(dragElement);
+			// let temp = document.createElement("div");
+		 //    e.target.replaceWith(temp);
+		 //    dragElement.replaceWith(e.target);
+		 //    temp.replaceWith(dragElement);
+			[dragElement.innerHTML, e.target.innerHTML] = [e.target.innerHTML, dragElement.innerHTML];
+      [dragElement.style.backgroundImage, e.target.style.backgroundImage] = [e.target.style.backgroundImage, dragElement.style.backgroundImage];
+    
 		}
 		dragElement=null;
 	})
